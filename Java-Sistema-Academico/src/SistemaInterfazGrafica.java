@@ -69,7 +69,6 @@ public class SistemaInterfazGrafica extends JFrame {
             reporteArea.append("Calificaciones: " + calificaciones[i][0] + ", " + calificaciones[i][1] + ", " + calificaciones[i][2] + "\n");
             reporteArea.append("Promedio: " + promedio + " - " + estado + "\n\n");
 
-            // Contar la frecuencia de las calificaciones
             for (double calificacion : calificaciones[i]) {
                 frecuenciaCalificaciones.put(calificacion, frecuenciaCalificaciones.getOrDefault(calificacion, 0) + 1);
             }
