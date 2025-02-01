@@ -16,7 +16,6 @@ public class SistemaInterfazGrafica extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
 
-        // Crear un panel para la tabla
         JPanel panelTabla = new JPanel(new BorderLayout());
         String[] columnNames = {"Nombre", "Matematicas", "Fisica", "Quimica", "Promedio", "Estado"};
         DefaultTableModel model = new DefaultTableModel(columnNames, 0);
@@ -25,7 +24,6 @@ public class SistemaInterfazGrafica extends JFrame {
         panelTabla.add(scrollPaneTabla, BorderLayout.CENTER);
         add(panelTabla, BorderLayout.NORTH);
 
-        // Crear un panel para el reporte y las tendencias
         JPanel panelReporte = new JPanel(new GridLayout(1, 2));
         reporteArea = new JTextArea();
         reporteArea.setEditable(false);
@@ -39,7 +37,6 @@ public class SistemaInterfazGrafica extends JFrame {
 
         add(panelReporte, BorderLayout.CENTER);
 
-        // Generar datos aleatorios
         Random random = new Random();
         String[] nombresGenerados = {
             "Carlos", "Daniel", "Robert", "Juan", "Luis", "Maria", "Alberto", "Sofia", "Pedro", "Camila",
@@ -55,7 +52,6 @@ public class SistemaInterfazGrafica extends JFrame {
             }
         }
 
-        // Mostrar los datos en la tabla y generar el reporte
         Map<Double, Integer> frecuenciaCalificaciones = new HashMap<>();
         for (int i = 0; i < nombres.length; i++) {
             double promedio = calcularPromedio(calificaciones, i);
@@ -69,7 +65,6 @@ public class SistemaInterfazGrafica extends JFrame {
                 estado
             });
 
-            // Generar reporte por estudiante
             reporteArea.append("Estudiante: " + nombres[i] + "\n");
             reporteArea.append("Calificaciones: " + calificaciones[i][0] + ", " + calificaciones[i][1] + ", " + calificaciones[i][2] + "\n");
             reporteArea.append("Promedio: " + promedio + " - " + estado + "\n\n");
@@ -80,7 +75,6 @@ public class SistemaInterfazGrafica extends JFrame {
             }
         }
 
-        // Mostrar las tendencias de las calificaciones
         tendenciasArea.append("Tendencias de calificaciones:\n");
         for (Map.Entry<Double, Integer> entry : frecuenciaCalificaciones.entrySet()) {
             tendenciasArea.append("Calificación: " + entry.getKey() + " - Frecuencia: " + entry.getValue() + "\n");
@@ -96,11 +90,9 @@ public class SistemaInterfazGrafica extends JFrame {
     }
 
     public static void main(String[] args) {
-        // Pedir al usuario el número de estudiantes
         String input = JOptionPane.showInputDialog("Ingrese el número de estudiantes del paralelo:");
         int n = Integer.parseInt(input);
 
-        // Crear y mostrar la interfaz gráfica
         SwingUtilities.invokeLater(() -> {
             SistemaInterfazGrafica interfaz = new SistemaInterfazGrafica(n);
             interfaz.setVisible(true);
